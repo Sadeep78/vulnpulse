@@ -6,7 +6,7 @@ setup(
     description="High-performance, threat-enriched CLI tool for Common Vulnerabilities and Exposures (CVEs)",
     long_description=open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
-    author="Prekarshamaxx123",
+    author="Sadeep78",
     packages=find_packages(),
     python_requires=">=3.8",
     entry_points={

@@ -5,8 +5,8 @@
 
 > [!IMPORTANT]
 > ### 🔒 Access & Usage Policy (Owner Permission Required)
-> **Copyright © 2026 Prekarshamaxx123. All Rights Reserved.**  
-> Permission is granted to view and execute this software for personal and educational evaluations only. **Unauthorized copying, redistribution, modification, sublicensing, deployment, or commercial usage of this codebase without prior explicit written permission from [@Prekarshamaxx123](https://github.com/Prekarshamaxx123) is strictly prohibited.**
+> **Copyright © 2026 Sadeep78. All Rights Reserved.**  
+> Permission is granted to view and execute this software for personal and educational evaluations only. **Unauthorized copying, redistribution, modification, sublicensing, deployment, or commercial usage of this codebase without prior explicit written permission from [@Sadeep78](https://github.com/Sadeep78) is strictly prohibited.**
 
 ---
 
@@ -253,7 +253,7 @@ python -m unittest discover tests -v
 
 ## 📄 License & Access Policy
 
-**Copyright (c) 2026 Prekarshamaxx123 (https://github.com/Prekarshamaxx123)**  
+**Copyright (c) 2026 Sadeep78 (https://github.com/Sadeep78)**  
 *All Rights Reserved.*
 
 **PROPRIETARY & CONFIDENTIAL SOURCE LICENSE**
@@ -262,8 +262,8 @@ Permission is granted to view and execute this software for personal and educati
 
 **Strict Restrictions:**
 1. **No Unauthorized Redistribution**: Unauthorized copying, cloning for redistribution, mirroring, or republishing of this software, in source or binary form, is strictly prohibited.
-2. **No Derivative Works**: Modification, alteration, decompilation, reverse engineering, or creation of derivative works without prior explicit written permission from the copyright holder (**Prekarshamaxx123**) is strictly forbidden.
+2. **No Derivative Works**: Modification, alteration, decompilation, reverse engineering, or creation of derivative works without prior explicit written permission from the copyright holder (**Sadeep78**) is strictly forbidden.
 3. **No Commercial Use**: Commercial use, resale, licensing, sublicensing, or integration into proprietary commercial products or services is strictly prohibited.
 4. **Attribution**: The copyright and author attribution notices must remain intact in all copies or substantial portions of the code.
 
-For permissions or enterprise inquiries, contact the author directly via GitHub: **[@Prekarshamaxx123](https://github.com/Prekarshamaxx123)**.
+For permissions or enterprise inquiries, contact the author directly via GitHub: **[@Sadeep78](https://github.com/Sadeep78)**.
