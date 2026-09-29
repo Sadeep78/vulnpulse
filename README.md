@@ -5,20 +5,18 @@
 
 ---
 
-## ⚡ What Makes VulnHound Advanced Better?
+## ⚡ Key Features & Capabilities
 
-| Feature | Standard VulnHound (Original) | VulnHound Advanced (v2.0) |
-| :--- | :--- | :--- |
-| **Data Sources** | NVD REST API 2.0 only | **NVD 2.0 + FIRST EPSS + CISA KEV + PoC Intelligence** |
-| **Exploit Probability** | ❌ None | **✅ Live EPSS Scores (0-100%) & Percentiles** |
-| **In-The-Wild Exploits** | ❌ None | **✅ CISA KEV Catalog Detection & Ransomware Flags** |
-| **PoC / Exploit Links** | ❌ None | **✅ Exploit-DB, GitHub PoCs, PacketStorm, Metasploit** |
-| **Interactive Console** | ❌ CLI arguments only | **✅ Live interactive shell (`--interactive` / `-i`)** |
-| **Vulnerability Inspector**| ❌ Basic 3-column table | **✅ Deep dossier inspector card (`--inspect` / `-d`)** |
-| **Advanced Filtering** | Basic year & date | **✅ `--severity`, `--cvss-min`, `--epss-min`, `--kev`, `--has-poc`, `--remote`, `--no-auth`, `--cwe`** |
-| **Export Formats** | Plain text & JSON | **✅ JSON, CSV, GitHub Markdown, and Interactive HTML** |
-| **Local Cache** | ❌ No caching (frequent 403s) | **✅ Smart SQLite TTL Cache (Zero Rate Limit Stress)** |
-| **Dependencies** | Python Standard Library | **✅ 100% Pure Python Standard Library (Zero `pip` deps required)** |
+- 🔍 **Real-Time Multi-Feed Intelligence**: Live queries against NIST NVD 2.0, FIRST EPSS, CISA KEV, and OSV databases.
+- 🎯 **EPSS Exploit Prediction**: Real-time exploit probability percentages (0-100%) and percentile rankings.
+- 🚨 **CISA KEV Integration**: Identifies vulnerabilities actively exploited in the wild with ransomware campaign tracking.
+- 🔥 **Public PoC & Exploit Discovery**: Automatically identifies verified public exploits and PoCs (Exploit-DB, GitHub, PacketStorm).
+- 📦 **Dependency & SBOM Auditor (SCA)**: Scans Python `requirements.txt` and Node.js `package.json` with remediation advice.
+- 🌐 **Built-in Web Dashboard Server**: Instant local cyber threat intelligence dashboard (`vulnhound serve`).
+- 🔬 **Deep Vulnerability Dossier**: Comprehensive inspection cards with CVSS v3.1/v4.0 metrics, vectors, and CWE definitions.
+- 💬 **Interactive Console**: Live search and inspection REPL shell (`vulnhound --interactive`).
+- 📊 **Multi-Format Export**: Supports SearchSploit-style terminal tables, JSON, CSV, GitHub Markdown, and interactive HTML reports.
+- ⚡ **Zero External Dependencies**: Built 100% on Python's standard library with automatic SQLite TTL caching.
 
 ---
 
