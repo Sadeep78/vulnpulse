@@ -301,6 +301,18 @@ def run_interactive(client: NVDClient, enricher: ThreatEnricher) -> None:
 
 
 def main(argv: Optional[List[str]] = None) -> int:
+    if argv is None:
+        argv = list(sys.argv[1:])
+
+    # Support friendly subcommands: `vulnhound audit <file>` -> `vulnhound --audit <file>`
+    if argv and argv[0].lower() == "audit":
+        target = argv[1] if len(argv) > 1 else ""
+        argv = ["--audit", target] + argv[2:]
+
+    # Support friendly subcommands: `vulnhound serve` -> `vulnhound --serve`
+    if argv and argv[0].lower() == "serve":
+        argv = ["--serve"] + argv[1:]
+
     parser = create_parser()
     args = parser.parse_args(argv)
 
@@ -311,17 +323,15 @@ def main(argv: Optional[List[str]] = None) -> int:
         return 0
 
     # Serve Web Dashboard
-    if args.serve or (args.query and args.query.lower() == "serve"):
+    if args.serve:
         from vulnhound.server import start_server
         start_server(port=args.port, open_browser=not args.no_browser)
         return 0
 
     # Audit Dependency File
-    if args.audit or (args.query and args.query.lower() == "audit"):
+    if args.audit:
         from vulnhound.auditor import DependencyAuditor
         target_file = args.audit
-        if not target_file and argv and len(argv) >= 2:
-            target_file = argv[1]
         if not target_file:
             print(f"{Colors.RED}Please specify a file to audit (e.g. vulnhound audit requirements.txt){Colors.RESET}")
             return 1
