@@ -24,28 +24,28 @@ import re
 import shlex
 from typing import List, Optional
 
-from searchcve import __version__
-from searchcve.models import CVEItem
-from searchcve.client import NVDClient
-from searchcve.enricher import ThreatEnricher
-from searchcve.formatter import format_table, format_inspector_card, Colors
-from searchcve.exporter import to_json, to_csv, to_markdown, to_html
-from searchcve.cache import QueryCache
+from vulnhound import __version__
+from vulnhound.models import CVEItem
+from vulnhound.client import NVDClient
+from vulnhound.enricher import ThreatEnricher
+from vulnhound.formatter import format_table, format_inspector_card, Colors
+from vulnhound.exporter import to_json, to_csv, to_markdown, to_html
+from vulnhound.cache import QueryCache
 
 
 def create_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog="searchcve",
-        description="SearchCVE Advanced v2.0 - High-Performance Threat-Enriched CVE Intelligence CLI",
+        prog="vulnhound",
+        description="VulnHound Advanced v2.0 - High-Performance Threat-Enriched CVE Intelligence CLI",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  searchcve bluetooth --last 5 --year 2025 --sort cvss
-  searchcve apache --kev --has-poc
-  searchcve openssh --remote --no-auth --severity CRITICAL
-  searchcve CVE-2021-44228 --inspect
-  searchcve wordpress --html --save report.html
-  searchcve --interactive
+  vulnhound bluetooth --last 5 --year 2025 --sort cvss
+  vulnhound apache --kev --has-poc
+  vulnhound openssh --remote --no-auth --severity CRITICAL
+  vulnhound CVE-2021-44228 --inspect
+  vulnhound wordpress --html --save report.html
+  vulnhound --interactive
         """,
     )
 
@@ -101,7 +101,7 @@ Examples:
     parser.add_argument("--timeout", type=float, help="HTTP connection timeout in seconds")
     parser.add_argument("--no-cache", action="store_true", help="Disable local query caching")
     parser.add_argument("--clear-cache", action="store_true", help="Clear all local cache files")
-    parser.add_argument("-v", "--version", action="version", version=f"SearchCVE Advanced v{__version__}")
+    parser.add_argument("-v", "--version", action="version", version=f"VulnHound Advanced v{__version__}")
 
     return parser
 
@@ -234,7 +234,7 @@ def execute_query(args: argparse.Namespace, client: NVDClient, enricher: ThreatE
         sanitized_q = re.sub(r"[^\w\-]", "_", query or "results")
         timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
         ext = "html" if args.html else ("json" if args.json else ("csv" if args.csv else "txt"))
-        save_path = f"searchcve_{sanitized_q}_{timestamp}.{ext}"
+        save_path = f"vulnhound_{sanitized_q}_{timestamp}.{ext}"
 
     if save_path:
         with open(save_path, "w", encoding="utf-8") as f:
@@ -249,14 +249,14 @@ def execute_query(args: argparse.Namespace, client: NVDClient, enricher: ThreatE
 
 def run_interactive(client: NVDClient, enricher: ThreatEnricher) -> None:
     """Live interactive search console."""
-    print(f"{Colors.BOLD}{Colors.CYAN}SearchCVE Interactive Console v{__version__}{Colors.RESET}")
+    print(f"{Colors.BOLD}{Colors.CYAN}VulnHound Interactive Console v{__version__}{Colors.RESET}")
     print("Type keywords, CVE IDs, or 'help' for instructions. Type 'exit' to quit.\n")
 
     parser = create_parser()
 
     while True:
         try:
-            raw_cmd = input(f"{Colors.BOLD}{Colors.GREEN}searchcve> {Colors.RESET}").strip()
+            raw_cmd = input(f"{Colors.BOLD}{Colors.GREEN}vulnhound> {Colors.RESET}").strip()
             if not raw_cmd:
                 continue
             if raw_cmd.lower() in ["exit", "quit", "q"]:
@@ -275,9 +275,9 @@ def run_interactive(client: NVDClient, enricher: ThreatEnricher) -> None:
                 print(f"Cleared {count} cached queries.")
                 continue
 
-            # Strip leading 'searchcve' if typed inside the prompt
+            # Strip leading 'vulnhound' if typed inside the prompt
             tokens = shlex.split(raw_cmd)
-            if tokens and tokens[0].lower() == "searchcve":
+            if tokens and tokens[0].lower() == "vulnhound":
                 tokens = tokens[1:]
 
             if not tokens:
@@ -312,18 +312,18 @@ def main(argv: Optional[List[str]] = None) -> int:
 
     # Serve Web Dashboard
     if args.serve or (args.query and args.query.lower() == "serve"):
-        from searchcve.server import start_server
+        from vulnhound.server import start_server
         start_server(port=args.port, open_browser=not args.no_browser)
         return 0
 
     # Audit Dependency File
     if args.audit or (args.query and args.query.lower() == "audit"):
-        from searchcve.auditor import DependencyAuditor
+        from vulnhound.auditor import DependencyAuditor
         target_file = args.audit
         if not target_file and argv and len(argv) >= 2:
             target_file = argv[1]
         if not target_file:
-            print(f"{Colors.RED}Please specify a file to audit (e.g. searchcve audit requirements.txt){Colors.RESET}")
+            print(f"{Colors.RED}Please specify a file to audit (e.g. vulnhound audit requirements.txt){Colors.RESET}")
             return 1
         auditor = DependencyAuditor(timeout=args.timeout or 8.0)
         try:

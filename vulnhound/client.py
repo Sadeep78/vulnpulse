@@ -13,8 +13,8 @@ import urllib.error
 from datetime import datetime
 from typing import List, Dict, Optional, Tuple, Any, Callable
 
-from searchcve.models import CVEItem
-from searchcve.cache import QueryCache
+from vulnhound.models import CVEItem
+from vulnhound.cache import QueryCache
 
 
 class NVDClient:
@@ -29,7 +29,7 @@ class NVDClient:
     ):
         self.api_key = api_key or os.environ.get("NVD_API_KEY")
 
-        env_timeout = os.environ.get("SEARCHCVE_TIMEOUT")
+        env_timeout = os.environ.get("VULNHOUND_TIMEOUT")
         if timeout is not None:
             self.timeout = timeout
         elif env_timeout:
@@ -66,7 +66,7 @@ class NVDClient:
                 return cached
 
         headers = {
-            "User-Agent": "SearchCVE-Advanced/2.0 (Security Scanner)",
+            "User-Agent": "VulnHound-Advanced/2.0 (Security Scanner)",
             "Accept": "application/json",
         }
         if self.api_key:
@@ -137,7 +137,7 @@ class NVDClient:
             return [], 0
 
         target_limit = last_n if last_n is not None else limit
-        max_allowed = int(os.environ.get("SEARCHCVE_MAX_RESULTS", 1000))
+        max_allowed = int(os.environ.get("VULNHOUND_MAX_RESULTS", 1000))
         if target_limit and target_limit > max_allowed:
             target_limit = max_allowed
 

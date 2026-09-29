@@ -10,7 +10,7 @@ import shutil
 import textwrap
 from typing import List, Optional
 
-from searchcve.models import CVEItem
+from vulnhound.models import CVEItem
 
 
 def _init_windows_vt() -> None:
@@ -84,7 +84,7 @@ def format_table(items: List[CVEItem], query_title: str = "") -> str:
     term_width = max(80, min(term_width, 140))
 
     lines = []
-    lines.append(f"{Colors.BOLD}{Colors.CYAN}SearchCVE Advanced v2.0.0{Colors.RESET}")
+    lines.append(f"{Colors.BOLD}{Colors.CYAN}VulnHound Advanced v2.0.0{Colors.RESET}")
     lines.append(f"{Colors.GRAY}{'─' * term_width}{Colors.RESET}")
     if query_title:
         lines.append(f"{Colors.BOLD}Query:{Colors.RESET} {query_title}")

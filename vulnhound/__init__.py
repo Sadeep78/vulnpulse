@@ -1,5 +1,5 @@
 """
-SearchCVE Advanced - High-Performance Threat-Enriched CVE Intelligence CLI & Library.
+VulnHound Advanced - High-Performance Threat-Enriched CVE Intelligence CLI & Library.
 """
 
 import sys

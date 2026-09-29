@@ -1,13 +1,13 @@
-# SearchCVE Advanced v2.0 🛡️🔍
+# VulnHound Advanced v2.0 🛡️🔍
 
 > **A Next-Generation, Threat-Enriched Cyber Vulnerability Intelligence CLI & Engine.**  
 > Searches the official NIST National Vulnerability Database (NVD) REST API 2.0 in real time and automatically enriches every vulnerability with **FIRST EPSS Exploit Predictions**, **CISA Known Exploited Vulnerabilities (KEV)**, **public Proof-of-Concepts (Exploit-DB, GitHub, PacketStorm)**, and **CWE classifications**.
 
 ---
 
-## ⚡ What Makes SearchCVE Advanced Better?
+## ⚡ What Makes VulnHound Advanced Better?
 
-| Feature | Standard SearchCVE (Original) | SearchCVE Advanced (v2.0) |
+| Feature | Standard VulnHound (Original) | VulnHound Advanced (v2.0) |
 | :--- | :--- | :--- |
 | **Data Sources** | NVD REST API 2.0 only | **NVD 2.0 + FIRST EPSS + CISA KEV + PoC Intelligence** |
 | **Exploit Probability** | ❌ None | **✅ Live EPSS Scores (0-100%) & Percentiles** |
@@ -25,10 +25,10 @@
 ## 🖥️ Terminal Preview
 
 ```
-$ searchcve bluetooth --last 5 --year 2025 --sort cvss
+$ vulnhound bluetooth --last 5 --year 2025 --sort cvss
 
 Searching live security feeds for: bluetooth...
-SearchCVE Advanced v2.0.0
+VulnHound Advanced v2.0.0
 ────────────────────────────────────────────────────────────────────────────────
 Query: bluetooth
 
@@ -54,7 +54,7 @@ Found: 5 CVEs | 3 High | 1 with Public PoC
 
 ### Deep Vulnerability Inspection (`--inspect` / `-d`)
 ```
-$ searchcve CVE-2021-44228 --inspect
+$ vulnhound CVE-2021-44228 --inspect
 
 ┌──────────────────────────────────────────────────────────────────────────────┐
 │                         CVE DOSSIER: CVE-2021-44228                          │
@@ -85,8 +85,8 @@ $ searchcve CVE-2021-44228 --inspect
 
 ### Option 1: Direct Local Installation (Recommended)
 ```bash
-git clone https://github.com/your-username/searchcve.git
-cd searchcve
+git clone https://github.com/your-username/vulnhound.git
+cd vulnhound
 pip install .
 ```
 
@@ -96,9 +96,9 @@ pip install -e ".[dev]"
 ```
 
 ### Option 3: Run Directly without Installing (Zero Install)
-SearchCVE Advanced requires **no external packages**! You can run it immediately with Python:
+VulnHound Advanced requires **no external packages**! You can run it immediately with Python:
 ```bash
-python searchcve.py --help
+python vulnhound.py --help
 ```
 
 ---
@@ -107,7 +107,7 @@ python searchcve.py --help
 
 ### Usage Syntax
 ```text
-searchcve [query] [options]
+vulnhound [query] [options]
 ```
 
 ### General & Scope Flags
@@ -170,38 +170,38 @@ searchcve [query] [options]
 ### 1. Actively Exploited In-The-Wild Vulnerabilities (CISA KEV)
 Find actively exploited vulnerabilities related to Microsoft Exchange or Apache:
 ```bash
-searchcve exchange --kev
-searchcve apache --kev --has-poc
+vulnhound exchange --kev
+vulnhound apache --kev --has-poc
 ```
 
 ### 2. High-Risk Remote Code Execution (Network + Pre-Auth + Critical)
 Filter strictly for zero-click remote exploits:
 ```bash
-searchcve openssh --remote --no-auth --severity CRITICAL
+vulnhound openssh --remote --no-auth --severity CRITICAL
 ```
 
 ### 3. Highest Exploit Probability (EPSS ≥ 50%)
 Filter for vulnerabilities with FIRST EPSS exploit probability $\ge 50\%$:
 ```bash
-searchcve wordpress --epss-min 0.50 --sort epss
+vulnhound wordpress --epss-min 0.50 --sort epss
 ```
 
 ### 4. Interactive Live Shell
 Launch interactive console to quickly search, browse, and inspect without re-typing commands:
 ```bash
-searchcve --interactive
+vulnhound --interactive
 ```
 
 ### 5. Generate Sleek Threat Report (HTML Dashboard)
 Creates a beautiful dark-mode HTML dossier ready to share with clients or leadership:
 ```bash
-searchcve "cisco" --last 20 --html --save cisco_audit.html
+vulnhound "cisco" --last 20 --html --save cisco_audit.html
 ```
 
 ### 6. Scripting & Tool Chaining
 Pipe CVE IDs directly into Nuclei, cURL, or other tools:
 ```bash
-searchcve apache --last 10 --kev --quiet | while read -r cve; do
+vulnhound apache --last 10 --kev --quiet | while read -r cve; do
     echo "[!] Checking exploit target for $cve..."
 done
 ```
@@ -209,14 +209,14 @@ done
 ### 7. Dependency & Project Security Audit (SCA)
 Scan your Python `requirements.txt` or Node.js `package.json` for known CVEs:
 ```bash
-searchcve audit requirements.txt
-searchcve audit package.json
+vulnhound audit requirements.txt
+vulnhound audit package.json
 ```
 
 ### 8. Built-in Live Web Dashboard Server
 Launch a local cyber threat intelligence dashboard in your browser on `http://localhost:8080`:
 ```bash
-searchcve serve
+vulnhound serve
 ```
 
 ---
@@ -226,8 +226,8 @@ searchcve serve
 | Variable | Default | Description |
 | :--- | :--- | :--- |
 | `NVD_API_KEY` | `None` | NIST NVD API key (boosts rate limits 10x from 5 req/30s to 50 req/30s) |
-| `SEARCHCVE_TIMEOUT` | `15.0` | Network request timeout in seconds |
-| `SEARCHCVE_MAX_RESULTS` | `1000` | Safety ceiling for maximum items retrieved |
+| `VULNHOUND_TIMEOUT` | `15.0` | Network request timeout in seconds |
+| `VULNHOUND_MAX_RESULTS` | `1000` | Safety ceiling for maximum items retrieved |
 | `NO_COLOR` | `None` | Set to any non-empty value to disable ANSI colors |
 
 > 🔑 **Get a Free NVD API Key**:  

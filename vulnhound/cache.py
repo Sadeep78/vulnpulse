@@ -8,7 +8,7 @@ import json
 import time
 from pathlib import Path
 from typing import Optional, Any
-from searchcve.enricher import get_cache_dir
+from vulnhound.enricher import get_cache_dir
 
 
 class QueryCache:

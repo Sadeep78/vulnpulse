@@ -10,16 +10,16 @@ import webbrowser
 from http.server import HTTPServer, BaseHTTPRequestHandler
 from typing import Optional
 
-from searchcve.client import NVDClient
-from searchcve.enricher import ThreatEnricher
-from searchcve.formatter import Colors
+from vulnhound.client import NVDClient
+from vulnhound.enricher import ThreatEnricher
+from vulnhound.formatter import Colors
 
 HTML_DASHBOARD = """<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SearchCVE Threat Intelligence Console</title>
+    <title>VulnHound Threat Intelligence Console</title>
     <style>
         :root {
             --bg-body: #0a0d14;
@@ -76,7 +76,7 @@ HTML_DASHBOARD = """<!DOCTYPE html>
 </head>
 <body>
     <div class="navbar">
-        <div class="logo">🛡️ SearchCVE <span>Advanced</span> Console</div>
+        <div class="logo">🛡️ VulnHound <span>Advanced</span> Console</div>
         <div class="status-badge">⚡ Real-time NIST NVD 2.0 &amp; EPSS Live</div>
     </div>
 
@@ -307,7 +307,7 @@ def start_server(port: int = 8080, open_browser: bool = True) -> None:
     server = HTTPServer(("127.0.0.1", port), DashboardHandler)
     url = f"http://localhost:{port}"
 
-    print(f"{Colors.BOLD}{Colors.CYAN}SearchCVE Threat Intelligence Dashboard Server{Colors.RESET}")
+    print(f"{Colors.BOLD}{Colors.CYAN}VulnHound Threat Intelligence Dashboard Server{Colors.RESET}")
     print(f"{Colors.GREEN}✔ Web Console running at: {Colors.BOLD}{url}{Colors.RESET}")
     print(f"{Colors.GRAY}Press Ctrl+C to stop the server.{Colors.RESET}\n")
 

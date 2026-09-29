@@ -1,6 +1,6 @@
 import unittest
-from searchcve.models import CVEItem, Metrics, EPSSData, KEVData, PoCReference
-from searchcve.formatter import format_table, format_inspector_card, get_severity_color, Colors
+from vulnhound.models import CVEItem, Metrics, EPSSData, KEVData, PoCReference
+from vulnhound.formatter import format_table, format_inspector_card, get_severity_color, Colors
 
 
 class TestFormatter(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestFormatter(unittest.TestCase):
         self.assertIn("92.3%", output)
         self.assertIn("KEV", output)
         self.assertIn("PoC", output)
-        self.assertIn("SearchCVE Advanced", output)
+        self.assertIn("VulnHound Advanced", output)
 
     def test_inspector_card_formatting(self):
         card = format_inspector_card(self.item)

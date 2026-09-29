@@ -1,5 +1,5 @@
 import unittest
-from searchcve.models import CVEItem, Metrics, EPSSData, KEVData, PoCReference
+from vulnhound.models import CVEItem, Metrics, EPSSData, KEVData, PoCReference
 
 
 class TestCVEModels(unittest.TestCase):

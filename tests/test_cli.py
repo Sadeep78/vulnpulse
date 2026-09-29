@@ -1,6 +1,6 @@
 import unittest
-from searchcve.cli import create_parser, apply_advanced_filters, sort_items
-from searchcve.models import CVEItem, Metrics, EPSSData, KEVData, PoCReference
+from vulnhound.cli import create_parser, apply_advanced_filters, sort_items
+from vulnhound.models import CVEItem, Metrics, EPSSData, KEVData, PoCReference
 
 
 class TestCLI(unittest.TestCase):

@@ -1,5 +1,5 @@
 import unittest
-from searchcve.auditor import DependencyAuditor
+from vulnhound.auditor import DependencyAuditor
 
 
 class TestAuditor(unittest.TestCase):

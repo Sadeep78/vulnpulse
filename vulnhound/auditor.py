@@ -12,7 +12,7 @@ from pathlib import Path
 from typing import List, Dict, Any, Optional, Tuple
 from concurrent.futures import ThreadPoolExecutor
 
-from searchcve.formatter import Colors
+from vulnhound.formatter import Colors
 
 
 class DependencyAuditor:
@@ -78,7 +78,7 @@ class DependencyAuditor:
             req = urllib.request.Request(
                 self.OSV_URL,
                 data=raw_data,
-                headers={"Content-Type": "application/json", "User-Agent": "SearchCVE-Auditor/2.0"},
+                headers={"Content-Type": "application/json", "User-Agent": "VulnHound-Auditor/2.0"},
             )
             with urllib.request.urlopen(req, timeout=self.timeout) as resp:
                 if resp.status == 200:
@@ -147,7 +147,7 @@ class DependencyAuditor:
     def format_audit_table(result: Dict[str, Any]) -> str:
         """Renders an audit summary in terminal format."""
         lines = []
-        lines.append(f"{Colors.BOLD}{Colors.CYAN}SearchCVE Dependency Audit Report{Colors.RESET}")
+        lines.append(f"{Colors.BOLD}{Colors.CYAN}VulnHound Dependency Audit Report{Colors.RESET}")
         lines.append(f"{Colors.GRAY}{'─' * 80}{Colors.RESET}")
         lines.append(f"Target: {Colors.BOLD}{result['file']}{Colors.RESET} ({result['ecosystem']})")
         lines.append(f"Scanned: {result['total_packages']} packages | Vulnerabilities: {Colors.RED if result['vulnerable_count'] else Colors.GREEN}{result['vulnerable_count']} found{Colors.RESET}\n")
