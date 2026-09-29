@@ -9,7 +9,7 @@ description = "High-performance, threat-enriched CLI tool for Common Vulnerabili
 readme = "README.md"
 requires-python = ">=3.8"
 license = {text = "Proprietary / All Rights Reserved"}
-authors = [{name = "Sadeep78"}]
+authors = [{name = "Prekarshamaxx123"}]
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: Other/Proprietary License",
