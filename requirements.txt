@@ -1,4 +1,4 @@
-# VulnHound Advanced has ZERO mandatory runtime dependencies.
+# VulnPulse Advanced has ZERO mandatory runtime dependencies.
 # Built 100% on Python standard library (urllib, json, sqlite3, dataclasses, concurrent.futures, argparse).
 
 # Optional test dependency:

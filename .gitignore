@@ -22,10 +22,10 @@ ENV/
 *.sqlite3
 *.db
 report.html
-vulnhound_*.html
-vulnhound_*.json
-vulnhound_*.txt
-vulnhound_*.csv
+vulnpulse_*.html
+vulnpulse_*.json
+vulnpulse_*.txt
+vulnpulse_*.csv
 
 # OS specific
 .DS_Store

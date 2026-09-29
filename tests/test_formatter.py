@@ -1,6 +1,6 @@
 import unittest
-from vulnhound.models import CVEItem, Metrics, EPSSData, KEVData, PoCReference
-from vulnhound.formatter import format_table, format_inspector_card, get_severity_color, Colors
+from vulnpulse.models import CVEItem, Metrics, EPSSData, KEVData, PoCReference
+from vulnpulse.formatter import format_table, format_inspector_card, get_severity_color, Colors
 
 
 class TestFormatter(unittest.TestCase):
@@ -33,7 +33,7 @@ class TestFormatter(unittest.TestCase):
         self.assertIn("92.3%", output)
         self.assertIn("KEV", output)
         self.assertIn("PoC", output)
-        self.assertIn("VulnHound Advanced", output)
+        self.assertIn("VulnPulse Advanced", output)
 
     def test_inspector_card_formatting(self):
         card = format_inspector_card(self.item)

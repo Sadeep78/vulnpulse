@@ -1,7 +1,7 @@
 import unittest
 import json
-from vulnhound.models import CVEItem, Metrics, EPSSData, KEVData
-from vulnhound.exporter import to_json, to_csv, to_markdown, to_html
+from vulnpulse.models import CVEItem, Metrics, EPSSData, KEVData
+from vulnpulse.exporter import to_json, to_csv, to_markdown, to_html
 
 
 class TestExporter(unittest.TestCase):
@@ -48,7 +48,7 @@ class TestExporter(unittest.TestCase):
 
     def test_html_export(self):
         html_out = to_html(self.items, query_title="log4j")
-        self.assertIn("VulnHound Advanced Threat Dossier", html_out)
+        self.assertIn("VulnPulse Advanced Threat Dossier", html_out)
         self.assertIn("CVE-2021-44228", html_out)
         self.assertIn("badge-critical", html_out)
         self.assertIn("KEV ACTIVE", html_out)

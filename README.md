@@ -1,4 +1,4 @@
-# VulnHound Advanced v2.0 🛡️🔍
+# VulnPulse Advanced v2.0 🛡️🔍
 
 > **A Next-Generation, Threat-Enriched Cyber Vulnerability Intelligence CLI & Engine.**  
 > Searches the official NIST National Vulnerability Database (NVD) REST API 2.0 in real time and automatically enriches every vulnerability with **FIRST EPSS Exploit Predictions**, **CISA Known Exploited Vulnerabilities (KEV)**, **public Proof-of-Concepts (Exploit-DB, GitHub, PacketStorm)**, and **CWE classifications**.
@@ -17,9 +17,9 @@
 - 🚨 **CISA KEV Integration**: Identifies vulnerabilities actively exploited in the wild with ransomware campaign tracking.
 - 🔥 **Public PoC & Exploit Discovery**: Automatically identifies verified public exploits and PoCs (Exploit-DB, GitHub, PacketStorm).
 - 📦 **Dependency & SBOM Auditor (SCA)**: Scans Python `requirements.txt` and Node.js `package.json` with remediation advice.
-- 🌐 **Built-in Web Dashboard Server**: Instant local cyber threat intelligence dashboard (`vulnhound serve`).
+- 🌐 **Built-in Web Dashboard Server**: Instant local cyber threat intelligence dashboard (`vulnpulse serve`).
 - 🔬 **Deep Vulnerability Dossier**: Comprehensive inspection cards with CVSS v3.1/v4.0 metrics, vectors, and CWE definitions.
-- 💬 **Interactive Console**: Live search and inspection REPL shell (`vulnhound --interactive`).
+- 💬 **Interactive Console**: Live search and inspection REPL shell (`vulnpulse --interactive`).
 - 📊 **Multi-Format Export**: Supports SearchSploit-style terminal tables, JSON, CSV, GitHub Markdown, and interactive HTML reports.
 - ⚡ **Zero External Dependencies**: Built 100% on Python's standard library with automatic SQLite TTL caching.
 
@@ -28,10 +28,10 @@
 ## 🖥️ Terminal Preview
 
 ```
-$ vulnhound bluetooth --last 5 --year 2025 --sort cvss
+$ vulnpulse bluetooth --last 5 --year 2025 --sort cvss
 
 Searching live security feeds for: bluetooth...
-VulnHound Advanced v2.0.0
+VulnPulse Advanced v2.0.0
 ────────────────────────────────────────────────────────────────────────────────
 Query: bluetooth
 
@@ -57,7 +57,7 @@ Found: 5 CVEs | 3 High | 1 with Public PoC
 
 ### Deep Vulnerability Inspection (`--inspect` / `-d`)
 ```
-$ vulnhound CVE-2021-44228 --inspect
+$ vulnpulse CVE-2021-44228 --inspect
 
 ┌──────────────────────────────────────────────────────────────────────────────┐
 │                         CVE DOSSIER: CVE-2021-44228                          │
@@ -88,8 +88,8 @@ $ vulnhound CVE-2021-44228 --inspect
 
 ### Option 1: Direct Local Installation (Recommended)
 ```bash
-git clone https://github.com/your-username/vulnhound.git
-cd vulnhound
+git clone https://github.com/your-username/vulnpulse.git
+cd vulnpulse
 pip install .
 ```
 
@@ -99,9 +99,9 @@ pip install -e ".[dev]"
 ```
 
 ### Option 3: Run Directly without Installing (Zero Install)
-VulnHound Advanced requires **no external packages**! You can run it immediately with Python:
+VulnPulse Advanced requires **no external packages**! You can run it immediately with Python:
 ```bash
-python vulnhound.py --help
+python vulnpulse.py --help
 ```
 
 ---
@@ -110,7 +110,7 @@ python vulnhound.py --help
 
 ### Usage Syntax
 ```text
-vulnhound [query] [options]
+vulnpulse [query] [options]
 ```
 
 ### General & Scope Flags
@@ -173,38 +173,38 @@ vulnhound [query] [options]
 ### 1. Actively Exploited In-The-Wild Vulnerabilities (CISA KEV)
 Find actively exploited vulnerabilities related to Microsoft Exchange or Apache:
 ```bash
-vulnhound exchange --kev
-vulnhound apache --kev --has-poc
+vulnpulse exchange --kev
+vulnpulse apache --kev --has-poc
 ```
 
 ### 2. High-Risk Remote Code Execution (Network + Pre-Auth + Critical)
 Filter strictly for zero-click remote exploits:
 ```bash
-vulnhound openssh --remote --no-auth --severity CRITICAL
+vulnpulse openssh --remote --no-auth --severity CRITICAL
 ```
 
 ### 3. Highest Exploit Probability (EPSS ≥ 50%)
 Filter for vulnerabilities with FIRST EPSS exploit probability $\ge 50\%$:
 ```bash
-vulnhound wordpress --epss-min 0.50 --sort epss
+vulnpulse wordpress --epss-min 0.50 --sort epss
 ```
 
 ### 4. Interactive Live Shell
 Launch interactive console to quickly search, browse, and inspect without re-typing commands:
 ```bash
-vulnhound --interactive
+vulnpulse --interactive
 ```
 
 ### 5. Generate Sleek Threat Report (HTML Dashboard)
 Creates a beautiful dark-mode HTML dossier ready to share with clients or leadership:
 ```bash
-vulnhound "cisco" --last 20 --html --save cisco_audit.html
+vulnpulse "cisco" --last 20 --html --save cisco_audit.html
 ```
 
 ### 6. Scripting & Tool Chaining
 Pipe CVE IDs directly into Nuclei, cURL, or other tools:
 ```bash
-vulnhound apache --last 10 --kev --quiet | while read -r cve; do
+vulnpulse apache --last 10 --kev --quiet | while read -r cve; do
     echo "[!] Checking exploit target for $cve..."
 done
 ```
@@ -212,14 +212,14 @@ done
 ### 7. Dependency & Project Security Audit (SCA)
 Scan your Python `requirements.txt` or Node.js `package.json` for known CVEs:
 ```bash
-vulnhound audit requirements.txt
-vulnhound audit package.json
+vulnpulse audit requirements.txt
+vulnpulse audit package.json
 ```
 
 ### 8. Built-in Live Web Dashboard Server
 Launch a local cyber threat intelligence dashboard in your browser on `http://localhost:8080`:
 ```bash
-vulnhound serve
+vulnpulse serve
 ```
 
 ---
@@ -229,8 +229,8 @@ vulnhound serve
 | Variable | Default | Description |
 | :--- | :--- | :--- |
 | `NVD_API_KEY` | `None` | NIST NVD API key (boosts rate limits 10x from 5 req/30s to 50 req/30s) |
-| `VULNHOUND_TIMEOUT` | `15.0` | Network request timeout in seconds |
-| `VULNHOUND_MAX_RESULTS` | `1000` | Safety ceiling for maximum items retrieved |
+| `VULNPULSE_TIMEOUT` | `15.0` | Network request timeout in seconds |
+| `VULNPULSE_MAX_RESULTS` | `1000` | Safety ceiling for maximum items retrieved |
 | `NO_COLOR` | `None` | Set to any non-empty value to disable ANSI colors |
 
 > 🔑 **Get a Free NVD API Key**:  
@@ -257,4 +257,4 @@ python -m unittest discover tests -v
 
 This repository and its source code are strictly proprietary.
 - **Strictly No Unauthorized Usage**: You may not copy, fork, distribute, modify, deploy, or commercially use this software without explicit written permission from the project owner.
-- **Requesting Access / Permissions**: If you wish to use, collaborate, or deploy VulnHound, please contact the author directly via GitHub: **[@Sadeep78](https://github.com/Sadeep78)**.
+- **Requesting Access / Permissions**: If you wish to use, collaborate, or deploy VulnPulse, please contact the author directly via GitHub: **[@Sadeep78](https://github.com/Sadeep78)**.

@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="vulnhound",
+    name="vulnpulse",
     version="2.0.0",
     description="High-performance, threat-enriched CLI tool for Common Vulnerabilities and Exposures (CVEs)",
     long_description=open("README.md", encoding="utf-8").read(),
@@ -11,7 +11,7 @@ setup(
     python_requires=">=3.8",
     entry_points={
         "console_scripts": [
-            "vulnhound=vulnhound.cli:main",
+            "vulnpulse=vulnpulse.cli:main",
         ],
     },
     extras_require={

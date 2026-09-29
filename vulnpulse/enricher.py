@@ -13,16 +13,16 @@ from pathlib import Path
 from typing import List, Dict, Optional, Set
 from concurrent.futures import ThreadPoolExecutor
 
-from vulnhound.models import CVEItem, EPSSData, KEVData, PoCReference
+from vulnpulse.models import CVEItem, EPSSData, KEVData, PoCReference
 
 
 def get_cache_dir() -> Path:
     """Return platform-appropriate cache directory."""
     if os.name == "nt":
         base = os.environ.get("LOCALAPPDATA") or os.path.expanduser("~")
-        cache_path = Path(base) / "vulnhound"
+        cache_path = Path(base) / "vulnpulse"
     else:
-        cache_path = Path.home() / ".cache" / "vulnhound"
+        cache_path = Path.home() / ".cache" / "vulnpulse"
     cache_path.mkdir(parents=True, exist_ok=True)
     return cache_path
 
@@ -96,7 +96,7 @@ class ThreatEnricher:
             try:
                 req = urllib.request.Request(
                     self.KEV_URL,
-                    headers={"User-Agent": "VulnHound-Advanced/2.0"}
+                    headers={"User-Agent": "VulnPulse-Advanced/2.0"}
                 )
                 with urllib.request.urlopen(req, timeout=self.timeout) as resp:
                     raw = resp.read()
@@ -149,7 +149,7 @@ class ThreatEnricher:
             query = ",".join(chunk)
             url = f"{self.EPSS_URL}?cve={query}"
             try:
-                req = urllib.request.Request(url, headers={"User-Agent": "VulnHound-Advanced/2.0"})
+                req = urllib.request.Request(url, headers={"User-Agent": "VulnPulse-Advanced/2.0"})
                 with urllib.request.urlopen(req, timeout=self.timeout) as resp:
                     res_json = json.loads(resp.read().decode("utf-8"))
                     for row in res_json.get("data", []):

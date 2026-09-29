@@ -1,5 +1,5 @@
 import unittest
-from vulnhound.auditor import DependencyAuditor
+from vulnpulse.auditor import DependencyAuditor
 
 
 class TestAuditor(unittest.TestCase):
