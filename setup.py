@@ -6,7 +6,7 @@ setup(
     description="High-performance, threat-enriched CLI tool for Common Vulnerabilities and Exposures (CVEs)",
     long_description=open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
-    author="Security Engineering Team",
+    author="Sadeep78",
     packages=find_packages(),
     python_requires=">=3.8",
     entry_points={
@@ -19,7 +19,7 @@ setup(
     },
     classifiers=[
         "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
+        "License :: Other/Proprietary License",
         "Operating System :: OS Independent",
         "Topic :: Security",
     ],

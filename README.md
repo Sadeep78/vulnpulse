@@ -3,6 +3,11 @@
 > **A Next-Generation, Threat-Enriched Cyber Vulnerability Intelligence CLI & Engine.**  
 > Searches the official NIST National Vulnerability Database (NVD) REST API 2.0 in real time and automatically enriches every vulnerability with **FIRST EPSS Exploit Predictions**, **CISA Known Exploited Vulnerabilities (KEV)**, **public Proof-of-Concepts (Exploit-DB, GitHub, PacketStorm)**, and **CWE classifications**.
 
+> [!IMPORTANT]
+> ### 🔒 Access & Usage Policy (Owner Permission Required)
+> **Copyright © 2026 Sadeep78. All Rights Reserved.**  
+> This repository is publicly viewable for showcase and educational reference only. **No unauthorized copying, redistribution, modification, sublicensing, deployment, or commercial usage of this codebase is permitted without explicit prior written permission from the owner ([@Sadeep78](https://github.com/Sadeep78)).**
+
 ---
 
 ## ⚡ Key Features & Capabilities
@@ -246,6 +251,10 @@ python -m unittest discover tests -v
 
 ---
 
-## 📄 License
+## 📄 License & Access Policy
 
-MIT License. Designed and maintained for security researchers, penetration testers, red/blue teams, and DevSecOps engineers worldwide.
+**Copyright © 2026 Sadeep78. All Rights Reserved.**
+
+This repository and its source code are strictly proprietary.
+- **Strictly No Unauthorized Usage**: You may not copy, fork, distribute, modify, deploy, or commercially use this software without explicit written permission from the project owner.
+- **Requesting Access / Permissions**: If you wish to use, collaborate, or deploy VulnHound, please contact the author directly via GitHub: **[@Sadeep78](https://github.com/Sadeep78)**.

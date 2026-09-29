@@ -17,5 +17,5 @@ if hasattr(sys.stderr, "reconfigure"):
         pass
 
 __version__ = "2.0.0"
-__author__ = "Security Engineering Team"
-__license__ = "MIT"
+__author__ = "Sadeep78"
+__license__ = "Proprietary"
